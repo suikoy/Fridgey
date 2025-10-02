@@ -106,7 +106,8 @@ fun InsertionDialog(
     val dialogViewModel = InsertionDialogViewModel(existedFoodInfo)
     var cameraStatus by remember { dialogViewModel.cameraStatus }
 
-    var isExpireDate by remember { mutableStateOf(false) }
+    //var isExpireDate by remember { mutableStateOf(false) }
+    var isExpireDate by remember { mutableStateOf(true) }
 
     var typeSelectionExpanded by remember { mutableStateOf(false) }
 
