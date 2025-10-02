@@ -28,8 +28,9 @@ jobs:
 
     - name: Generate a temporary keystore
       run: |
+        mkdir -p app
         keytool -genkeypair -v \
-          -keystore release-keystore.jks \
+          -keystore app/release-keystore.jks \
           -storepass password \
           -alias release-key \
           -keypass password \
@@ -39,7 +40,7 @@ jobs:
     - name: Build release APK
       run: |
         ./gradlew assembleRelease \
-          -Pandroid.injected.signing.store.file=release-keystore.jks \
+          -Pandroid.injected.signing.store.file=app/release-keystore.jks \
           -Pandroid.injected.signing.store.password=password \
           -Pandroid.injected.signing.key.alias=release-key \
           -Pandroid.injected.signing.key.password=password
