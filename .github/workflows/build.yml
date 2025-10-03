@@ -28,11 +28,18 @@ jobs:
       run: |
         ./gradlew createMetadataFile || echo "Skipping metadata creation"
 
+    - name: Detect module app directory
+      id: detect_app
+      run: |
+        # Trova la cartella che contiene build.gradle del modulo app
+        APP_DIR=$(find . -type f -name build.gradle | grep '/app/build.gradle' | sed 's|/build.gradle||')
+        echo "APP_DIR=$APP_DIR" >> $GITHUB_ENV
+
     - name: Generate a temporary keystore
       run: |
-        mkdir -p app/app
+        mkdir -p $APP_DIR
         keytool -genkeypair -v \
-          -keystore app/app/release-keystore.jks \
+          -keystore $APP_DIR/release-keystore.jks \
           -storepass password \
           -alias release-key \
           -keypass password \
@@ -42,7 +49,7 @@ jobs:
     - name: Build release APK
       run: |
         ./gradlew :app:assembleRelease \
-          -Pandroid.injected.signing.store.file=app/app/release-keystore.jks \
+          -Pandroid.injected.signing.store.file=$APP_DIR/release-keystore.jks \
           -Pandroid.injected.signing.store.password=password \
           -Pandroid.injected.signing.key.alias=release-key \
           -Pandroid.injected.signing.key.password=password
