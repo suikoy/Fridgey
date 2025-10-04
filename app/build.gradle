@@ -27,7 +27,7 @@ android {
     compileSdk 34
 
     defaultConfig {
-        applicationId "lying.fengfeng.foodrecords.suikoy"
+        applicationId "lying.fengfeng.foodrecords"
         minSdk 26
         targetSdk 34
         versionCode appVersionCode
@@ -53,6 +53,10 @@ android {
         release {
             // COMMENT THIS LINE IN ORDER TO USE THE INSTRUCTIONS IN build.yml
             // signingConfig signingConfigs.release
+
+            // CUSTOM HERE
+            applicationIdSuffix ".suikoy"
+
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField "String", "BACKEND_HOST", "\"${backendHost}\""

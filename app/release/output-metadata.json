@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "lying.fengfeng.foodrecords.suikoy",
+  "applicationId": "lying.fengfeng.foodrecords",
   "variantName": "release",
   "elements": [
     {
