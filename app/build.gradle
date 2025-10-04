@@ -39,7 +39,7 @@ android {
         }
     }
 
-    // ORIGINAL
+    // COMMENT THIS SECTION IN ORDER TO USE THE INSTRUCTIONS IN build.yml
     // signingConfigs {
     //     release{
     //         storeFile file("../fengfengkeystore.jks")
@@ -49,18 +49,10 @@ android {
     //     }
     // }
 
-    signingConfigs {
-        release{
-            storeFile file("../release-keystore.jks")
-            storePassword "password"               // if you want to try without secrets
-            keyAlias "release-key"
-            keyPassword "password"
-        }
-    }
-
     buildTypes {
         release {
-            signingConfig signingConfigs.release
+            // COMMENT THIS LINE IN ORDER TO USE THE INSTRUCTIONS IN build.yml
+            // signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField "String", "BACKEND_HOST", "\"${backendHost}\""
