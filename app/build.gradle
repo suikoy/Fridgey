@@ -51,7 +51,7 @@ android {
 
     signingConfigs {
         release{
-            storeFile file("$rootDir/release-keystore.jks")
+            storeFile file("${rootProject.projectDir}/release-keystore.jks")
             storePassword "password"               // if you want to try without secrets
             keyAlias "release-key"
             keyPassword "password"
