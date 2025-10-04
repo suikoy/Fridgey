@@ -40,13 +40,16 @@ jobs:
           pwd
           echo "Full path: $(pwd)/app/release-keystore.jks"
 
-      - name: Build release APK
-        run: |
-          ./gradlew :app:assembleRelease \
-            -Pandroid.injected.signing.store.file="${PWD}/app/release-keystore.jks" \
-            -Pandroid.injected.signing.store.password=password \
-            -Pandroid.injected.signing.key.alias=release-key \
-            -Pandroid.injected.signing.key.password=password
+      # - name: Build PROD release APK
+      #   run: |
+      #     ./gradlew :app:assembleRelease \
+      #       -Pandroid.injected.signing.store.file="${PWD}/app/release-keystore.jks" \
+      #       -Pandroid.injected.signing.store.password=password \
+      #       -Pandroid.injected.signing.key.alias=release-key \
+      #       -Pandroid.injected.signing.key.password=password
+
+      - name: Build debug APK
+        run: ./gradlew :app:assembleDebug
 
       - name: Upload release APK
         uses: actions/upload-artifact@v4
