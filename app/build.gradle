@@ -27,7 +27,7 @@ android {
     compileSdk 34
 
     defaultConfig {
-        applicationId "lying.fengfeng.foodrecords"
+        applicationId "lying.fengfeng.foodrecords.suikoy"
         minSdk 26
         targetSdk 34
         versionCode appVersionCode
