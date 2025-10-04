@@ -39,12 +39,22 @@ android {
         }
     }
 
+    // ORIGINAL
+    // signingConfigs {
+    //     release{
+    //         storeFile file("../fengfengkeystore.jks")
+    //         storePassword System.getenv("RELEASE_KEYSTORE_PASSWORD")
+    //         keyAlias System.getenv("RELEASE_KEYSTORE_ALIAS")
+    //         keyPassword System.getenv("RELEASE_KEY_PASSWORD")
+    //     }
+    // }
+
     signingConfigs {
         release{
-            storeFile file("../fengfengkeystore.jks")
-            storePassword System.getenv("RELEASE_KEYSTORE_PASSWORD")
-            keyAlias System.getenv("RELEASE_KEYSTORE_ALIAS")
-            keyPassword System.getenv("RELEASE_KEY_PASSWORD")
+            storeFile file("release-keystore.jks")
+            storePassword "password"               // if you want to try without secrets
+            keyAlias "release-key"
+            keyPassword "password"
         }
     }
 
