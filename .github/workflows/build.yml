@@ -32,11 +32,13 @@ jobs:
           APP_DIR=$(find . -type f -name build.gradle | grep '/app/build.gradle' | sed 's|/build.gradle||')
           echo "APP_DIR=$APP_DIR" >> $GITHUB_ENV
           echo "Detected APP_DIR=$APP_DIR"
+          pwd
+          echo "APP_DIR full path: $(pdw)/$APP_DIR"
 
       - name: Generate a temporary keystore
         run: |
           keytool -genkeypair -v \
-            -keystore release-keystore.jks \
+            -keystore app/release-keystore.jks \
             -storepass password \
             -alias release-key \
             -keypass password \
