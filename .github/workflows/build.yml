@@ -42,6 +42,10 @@ jobs:
             -keypass password \
             -keyalg RSA -keysize 2048 -validity 10000 \
             -dname "CN=Fridgey, OU=Fridgey, O=Fridgey, L=City, S=State, C=US"
+          echo "Keystore created at:"
+          ls -la release-keystore.jks
+          pwd
+          echo "Full path: $(pwd)/release-keystore.jks"
 
       - name: Build release APK
         run: |
