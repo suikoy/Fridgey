@@ -31,9 +31,9 @@ jobs:
         run: |
           APP_DIR=$(find . -type f -name build.gradle | grep '/app/build.gradle' | sed 's|/build.gradle||')
           echo "APP_DIR=$APP_DIR" >> $GITHUB_ENV
-          echo "Detected APP_DIR=$APP_DIR"
+          echo "APP_DIR relative path: $APP_DIR"
           pwd
-          echo "APP_DIR full path: $(pdw)/$APP_DIR"
+          echo "APP_DIR full path: $(pwd)/$APP_DIR"
 
       - name: Generate a temporary keystore
         run: |
@@ -45,9 +45,9 @@ jobs:
             -keyalg RSA -keysize 2048 -validity 10000 \
             -dname "CN=Fridgey, OU=Fridgey, O=Fridgey, L=City, S=State, C=US"
           echo "Keystore created at:"
-          ls -la release-keystore.jks
+          ls -la app/release-keystore.jks
           pwd
-          echo "Full path: $(pwd)/release-keystore.jks"
+          echo "Full path: $(pwd)/app/release-keystore.jks"
 
       - name: Build release APK
         run: |
