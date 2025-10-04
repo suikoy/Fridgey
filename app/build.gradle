@@ -55,13 +55,15 @@ android {
             // signingConfig signingConfigs.release
 
             // CUSTOM HERE
-            // applicationIdSuffix ".suikoy"
+            applicationIdSuffix ".suikoy"
 
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField "String", "BACKEND_HOST", "\"${backendHost}\""
         }
         debug {
+            // CUSTOM HERE
+            applicationIdSuffix ".suikoy"
             buildConfigField "String", "BACKEND_HOST", "\"${backendHost}\""
         }
     }
